@@ -8,13 +8,21 @@ A simple Python package for sending notifications to Discord channels using webh
 pip install dugudugu-discord-notifier
 ```
 
-## Configuration
+## Usage
 
-1. Create a `.env` file in your project root directory
-2. Add your Discord webhook URL to the `.env` file:
-   ```env
-   WEBHOOK_URL=your_discord_webhook_url_here
-   ```
+```python
+from notifier.discord_notifier import DiscordNotifier
+
+# Initialize with webhook URL
+webhook_url = "your-webhook-url-here"  # Discord webhook URL
+notifier = DiscordNotifier(webhook_url)
+
+# Send a simple message
+notifier.send_message("Hello, World!")
+
+# Send a message with title
+notifier.send_message("This is the message content", "This is the title")
+```
 
 ### How to get Discord Webhook URL:
 1. Go to your Discord server
@@ -24,28 +32,11 @@ pip install dugudugu-discord-notifier
 5. Click 'Create Webhook' (or 'View Webhooks' if you already have one)
 6. Click 'New Webhook'
 7. Copy the Webhook URL
-8. Paste it in your `.env` file
-
-## Usage
-
-```python
-from notifier.discord_notifier import DiscordNotifier
-
-# Initialize the notifier
-notifier = DiscordNotifier()
-
-# Send a simple message
-notifier.send_message("Hello, World!")
-
-# Send a message with a title
-notifier.send_message("This is the message content", "This is the title")
-```
 
 ## Features
 
 - Simple and easy to use
 - Supports markdown formatting
-- Environment-based configuration
 - Timeout handling
 - Error reporting
 
@@ -53,4 +44,3 @@ notifier.send_message("This is the message content", "This is the title")
 
 - Python 3.7+
 - requests
-- python-dotenv

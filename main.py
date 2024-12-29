@@ -9,7 +9,9 @@ from notifier.discord_notifier import DiscordNotifier
 def main():
     """Main entry point of the application."""
     try:
-        notifier = DiscordNotifier()
+        # Initialize with webhook URL
+        webhook_url = "your-webhook-url-here"
+        notifier = DiscordNotifier(webhook_url)
         
         # Send a test message
         message = "Hello! This is a test message."

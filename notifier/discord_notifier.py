@@ -1,26 +1,23 @@
-import os
 import requests
-from dotenv import load_dotenv
-from pathlib import Path
 from typing import Optional
 
 class DiscordNotifier:
     """A class to handle Discord webhook notifications.
     
     This class provides functionality to send messages to Discord channels
-    through webhooks. It supports markdown formatting and handles environment
-    configuration automatically.
+    through webhooks. It supports markdown formatting.
     """
     
-    def __init__(self):
-        """Initialize the Discord notifier with webhook URL from environment variables."""
-        root_dir = Path(__file__).parent.parent
-        env_path = root_dir / '.env'
-        load_dotenv(dotenv_path=env_path)
+    def __init__(self, webhook_url: str):
+        """Initialize the Discord notifier.
         
-        self.webhook_url = os.getenv('WEBHOOK_URL')
-        if not self.webhook_url:
-            raise ValueError("WEBHOOK_URL is not set in the .env file")
+        Args:
+            webhook_url (str): Discord webhook URL
+        """
+        if not webhook_url:
+            raise ValueError("Webhook URL must be provided")
+            
+        self.webhook_url = webhook_url
 
     def send_message(self, content: str, title: Optional[str] = None) -> bool:
         """Send a message to Discord via webhook.
@@ -33,7 +30,7 @@ class DiscordNotifier:
             bool: True if the message was sent successfully, False otherwise
             
         Example:
-            >>> notifier = DiscordNotifier()
+            >>> notifier = DiscordNotifier("your-webhook-url")
             >>> success = notifier.send_message("Hello, World!", "Greeting")
         """
         if not content:
