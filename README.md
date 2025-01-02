@@ -36,11 +36,32 @@ notifier.send_message("This is the message content", "This is the title")
 ## Features
 
 - Simple and easy to use
-- Supports markdown formatting
-- Timeout handling
-- Error reporting
+- Supports markdown formatting in messages
+- Built-in timeout handling (10 seconds)
+- Error reporting and handling
+- Title support for messages
+- Returns boolean status for message delivery
 
 ## Requirements
 
 - Python 3.7+
-- requests
+- requests ^2.31.0
+
+## Package Information
+
+- Version: 0.3.0
+- License: MIT
+- Author: taejun (dugudugu0622@gmail.com)
+- Repository: https://github.com/taejun0622/notifier
+
+## Error Handling
+
+The package includes built-in error handling:
+- Returns `True` if message is sent successfully
+- Returns `False` if message sending fails
+- Prints error message to console in case of failure
+- Automatically handles network timeouts
+
+## Contributing
+
+Feel free to open issues or submit pull requests on GitHub.
